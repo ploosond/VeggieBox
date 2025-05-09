@@ -47,7 +47,7 @@ export const AppContextProvider = ({ children }) => {
     let cartData = structuredClone(cartItems);
     if (cartData[itemId]) {
       cartData[itemId] -= 1;
-      if (cartData[itemId === 0]) {
+      if (cartData[itemId] === 0) {
         delete cartData[itemId];
       }
     }
@@ -56,7 +56,6 @@ export const AppContextProvider = ({ children }) => {
   };
 
   // Get Cart Items Count
-
   const getCartCount = () => {
     let totalCount = 0;
     for (const item in cartItems) {
