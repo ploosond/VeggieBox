@@ -11,7 +11,7 @@ const port = process.env.PORT || 4000;
 await connectDB();
 
 // Allow multiple origins
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["http://localhost:5173/"];
 
 // Middleware configuration
 app.use(express.json());
