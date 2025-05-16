@@ -1,17 +1,17 @@
-import express from "express";
+import express from 'express';
 import {
-  isAuth,
-  login,
-  logout,
-  register,
-} from "../controllers/userController.js";
-import authUser from "../middlewares/authUser.js";
+    isAuth,
+    login,
+    logout,
+    register,
+} from '../controllers/userController.js';
+import authUser from '../middlewares/authUser.js';
 
-const userRouter = express.Router();
+const userRoute = express.Router();
 
-userRouter.post("/register", register);
-userRouter.post("/login", login);
-userRouter.get("/is-auth", authUser, isAuth);
-userRouter.post("/logout", logout);
+userRoute.post('/register', register);
+userRoute.post('/login', login);
+userRoute.get('/is-auth', authUser, isAuth);
+userRoute.post('/logout', logout);
 
-export default userRouter;
+export default userRoute;
