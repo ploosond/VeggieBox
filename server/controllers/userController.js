@@ -27,15 +27,11 @@ export const register = async (req, res) => {
         });
 
         res.cookie('auth-cookie', token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict', //CSRF protection
-            maxAge: 7 * 24 * 60 * 60 * 1000, //Cookie expiration time
+            httpOnly: true, secure: 'true', sameSite: 'none', maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
         return res.json({
-            success: true,
-            user: {email: user.email, name: user.name},
+            success: true, user: {email: user.email, name: user.name},
         });
     } catch (error) {
         console.error(error.message);
@@ -51,8 +47,7 @@ export const login = async (req, res) => {
 
         if (!email || !password) {
             return res.json({
-                success: false,
-                message: 'Email and password are required',
+                success: false, message: 'Email and password are required',
             });
         }
 
@@ -73,15 +68,11 @@ export const login = async (req, res) => {
         });
 
         res.cookie('auth-cookie', token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict', //CSRF protection
-            maxAge: 7 * 24 * 60 * 60 * 1000, //Cookie expiration time
+            httpOnly: true, secure: 'true', sameSite: 'none', maxAge: 7 * 24 * 60 * 60 * 1000, //Cookie expiration time
         });
 
         return res.json({
-            success: true,
-            user: {email: user.email, name: user.name},
+            success: true, user: {email: user.email, name: user.name},
         });
     } catch (error) {
         console.error(error.message);
@@ -109,9 +100,7 @@ export const isAuth = async (req, res) => {
 export const logout = async (req, res) => {
     try {
         res.clearCookie('token', {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            httpOnly: true, secure: 'true', sameSite: 'none',
         });
 
         return res.json({success: true, message: 'Logged Out'});
